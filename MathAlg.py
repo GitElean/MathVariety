@@ -23,3 +23,29 @@ def crossProduct(a, b):
 
     return c
 
+def add(a, b):
+    c =()
+    
+    for i in len(a):
+        x=a(i)+b(i)
+        c.append(x)
+        
+    return c
+
+def substract(a, b):
+    c =()
+    
+    for i in len(a):
+        x=a(i)-b(i)
+        c.append(x)
+        
+    return c
+
+def multiply(a, b):
+    c =()
+    
+    for i in len(a):
+        x=a(i)*b(i)
+        c.append(x)
+        
+    return c
