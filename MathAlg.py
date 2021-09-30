@@ -80,5 +80,5 @@ def inversa(matrix):#Shotout a Alfredo
             
     return result
 
-def normal():
-    pass
+def normal(v):
+    return (v[0]**2 + v[1]** + v[0]**2)**0.5
