@@ -49,3 +49,36 @@ def multiply(a, b):
         c.append(x)
         
     return c
+
+def inversa(matrix):#Shotout a Alfredo
+    n = len(matrix)
+    m = matrix
+    
+    for i in range(n):
+        for j in range(n):
+            if i==j:
+                m[i].append(1)
+            else:
+                m[i].append(0)
+                
+    for i in range(n):
+        if i!= j:
+            ratio = m[j][i] / m[i][i]
+                
+            for k in range(2*n):
+                m[j][k] = m[j][k] - ratio * m[i][k]
+            
+    for i in range(n):
+        div = m[i][i]
+        for j in range(2*n):
+            m[i][j] = m[i][j]/div
+            
+    result = [[] for _ in range(n)]
+    for i in range(n):
+        for j in range(n, n*2):
+            result[i].append(m[i][j])
+            
+    return result
+
+def normal():
+    pass
