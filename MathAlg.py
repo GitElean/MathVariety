@@ -6,49 +6,47 @@ Created on Mon Sep 27 20:52:47 2021
 """
 
 #Libreria matemáticas alg lineal
+import collections
+
+V2 = collections.namedtuple('Point2', ['x', 'y'])
+V3 = collections.namedtuple('Point3', ['x', 'y', 'z'])
+V4 = collections.namedtuple('Point4', ['x', 'y', 'z', 'w'])
+
 
 def dotProduct(a, b):
-    c =()
-    
-    for i in len(a):
-        x=a(i)*b(i)
-        c.append(x)
-        
-    return sum(c)
+    x = (a.x * b.x + a.y * b.y + a.z * b.z)     
+    return x
 
 def crossProduct(a, b):
-    c = [a[1]*b[2] - a[2]*b[1],
-         a[2]*b[0] - a[0]*b[2],
-         a[0]*b[1] - a[1]*b[0]]
+    x = a.y * b.z - a.z * b.y
+    y = a.z * b.x - a.x * b.z
+    z = a.x * b.y - a.y * b.x
 
-    return c
+    return V3(x,y,z)
 
 def add(a, b):
-    c =()
-    
-    for i in len(a):
-        x=a(i)+b(i)
-        c.append(x)
-        
-    return c
+    x = a.x + b.x
+    y = a.y + b.y
+    z = a.z + b.z
+    return V3(x,y,z)
 
 def substract(a, b):
-    c =()
-    
-    for i in len(a):
-        x=a(i)-b(i)
-        c.append(x)
-        
-    return c
+    x = a.x + b.x
+    y = a.y + b.y
+    z = a.z + b.z
+    return V3(x,y,z)
 
 def multiply(a, b):
-    c =()
-    
-    for i in len(a):
-        x=a(i)*b(i)
-        c.append(x)
-        
-    return c
+    x = a.x * b.x
+    y = a.y * b.y
+    z = a.z * b.z
+    return V3(x,y,z)
+
+def vector_Scalar(a, k):
+    x = a.x *k
+    y = a.y *k
+    z = a.z *k
+    return V3(x,y,z)
 
 def inversa(matrix):#Shotout a Alfredo
     n = len(matrix)
@@ -80,5 +78,30 @@ def inversa(matrix):#Shotout a Alfredo
             
     return result
 
-def normal(v):
+def magnitude(v):
     return (v[0]**2 + v[1]** + v[0]**2)**0.5
+
+def normal(a):
+    #Vector normal
+    l = magnitude(a)
+    if l == 0:
+        return V3(0, 0, 0)
+    else:
+        return V3(a.x/l, a.y/l, a.z/l)
+    
+def matrixMul(a,b):
+    #Multiplicacion de matrices 
+    if len(a[0]) == len(b):
+        resultMatrix = [[0] * len(b[0]) for i in range(len(a))]
+        for x in range(len(a)):
+            for y in range(len(b[0])):
+                for z in range(len(a[0])):
+                    try:
+                        resultMatrix[x][y] += a[x][z] * b[z][y]
+                    except IndexError:
+                        pass
+        return resultMatrix
+    else:
+        print("\nERROR: No es una matriz cuadrada")
+        return 0
+    

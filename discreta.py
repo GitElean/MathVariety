@@ -21,8 +21,10 @@ def combin(n, r):
     comb = facto(n)/(facto(r)*facto(n-r))
     return comb
     
-x = permu(7,5)
-y = combin(5,2)
+x = permu(9,5)/5
+y = combin(14,4)
 z = facto(4)
+
+a = facto(11)/(facto(4)*facto(2)*facto(2))
 print(x)
 
